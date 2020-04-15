@@ -19,7 +19,7 @@ const fileStorage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     cb(null, new Date().toISOString() + "-" + file.originalname);
-  }
+  },
 });
 
 const fileFilter = (req, file, cb) => {
@@ -94,9 +94,9 @@ app.use(
       return {
         data,
         message,
-        status
+        status,
       };
-    }
+    },
   })
 );
 
@@ -109,10 +109,8 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://felipe_user:supwyr-xiqpyk-4giPhi@cluster0-si2zr.mongodb.net/messages"
-  )
-  .then(result => {
+  .connect("")
+  .then((result) => {
     app.listen(8080);
   })
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
